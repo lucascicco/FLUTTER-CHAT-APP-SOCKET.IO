@@ -18,9 +18,6 @@ class _SignUpViewState extends State<SignUpView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Criar conta'),
-      ),
       body: Center(
         child: SingleChildScrollView(child: formValidation()),
       ),
@@ -98,8 +95,7 @@ class _SignUpViewState extends State<SignUpView> {
     return InputDecorator(
       decoration: const InputDecoration(
           contentPadding:
-              const EdgeInsets.only(bottom: 10, right: 20, left: 10),
-          border: const OutlineInputBorder()),
+              const EdgeInsets.only(bottom: 10, right: 20, left: 10)),
       child: DropdownButtonHideUnderline(
         child: DropdownButton<String>(
             value: _value,

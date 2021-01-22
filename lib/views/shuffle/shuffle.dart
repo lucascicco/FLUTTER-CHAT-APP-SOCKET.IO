@@ -48,7 +48,7 @@ class _ShuffleViewState extends BaseState<ShuffleView> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Shuffle Scene'),
+        title: Text('Chat app'),
         actions: [
           IconButton(
               icon: Icon(Icons.exit_to_app),

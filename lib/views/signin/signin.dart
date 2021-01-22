@@ -12,9 +12,6 @@ class SignInView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Entrar'),
-      ),
       body: SingleChildScrollView(
         child: formValidation(context),
       ),

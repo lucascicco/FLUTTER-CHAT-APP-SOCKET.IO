@@ -17,7 +17,6 @@ class EGTextFormField extends StatelessWidget {
     return TextFormField(
       controller: controller,
       decoration: InputDecoration(
-        border: OutlineInputBorder(),
         hintText: hintText,
         labelText: labelText,
       ),
