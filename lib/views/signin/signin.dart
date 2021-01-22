@@ -46,62 +46,45 @@ class SignInView extends StatelessWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: RaisedButton(
-                          color: Colors.blueAccent,
-                          child: Text(
-                            'Entrar',
-                            style: TextStyle(color: Colors.white, fontSize: 20),
-                          ),
-                          onPressed: () {
-                            //User Data For Service
-                            var userData = <String, dynamic>{
-                              "email": _email.text,
-                              "password": _password.text
-                            };
-                            ServiceManager.shared.signIn(userData,
-                                completionHandler: (status, message) {
-                              if (status) {
-                                Navigator.of(context).pushAndRemoveUntil(
-                                    (MaterialPageRoute(
-                                        builder: (context) => ShuffleView())),
-                                    (route) => false);
-                              } else {
-                                showDialog(
-                                    context: context,
-                                    builder: (context) => EGAlert(
-                                          title: 'Erro',
-                                          bodyMessage: message,
-                                        ));
-                              }
-                            });
-                          }),
-                    ),
-                  )
-                ],
-              ),
-              Row(
-                children: [
-                  Expanded(
-                      child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: RaisedButton(
-                        color: Colors.cyan,
-                        child: Text(
-                          'Cadastrar',
-                          style: TextStyle(color: Colors.white, fontSize: 20),
-                        ),
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => SignUpView()));
-                        }),
-                  )),
-                ],
-              )
+              RaisedButton(
+                  color: Colors.blueAccent,
+                  child: Text(
+                    'Entrar',
+                    style: TextStyle(color: Colors.white, fontSize: 15),
+                  ),
+                  onPressed: () {
+                    //User Data For Service
+                    var userData = <String, dynamic>{
+                      "email": _email.text,
+                      "password": _password.text
+                    };
+                    ServiceManager.shared.signIn(userData,
+                        completionHandler: (status, message) {
+                      if (status) {
+                        Navigator.of(context).pushAndRemoveUntil(
+                            (MaterialPageRoute(
+                                builder: (context) => ShuffleView())),
+                            (route) => false);
+                      } else {
+                        showDialog(
+                            context: context,
+                            builder: (context) => EGAlert(
+                                  title: 'Erro',
+                                  bodyMessage: message,
+                                ));
+                      }
+                    });
+                  }),
+              RaisedButton(
+                  color: Colors.cyan,
+                  child: Text(
+                    'Cadastrar',
+                    style: TextStyle(color: Colors.white, fontSize: 15),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => SignUpView()));
+                  })
             ],
           )
         ],

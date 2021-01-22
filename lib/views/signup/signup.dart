@@ -57,7 +57,14 @@ class _SignUpViewState extends State<SignUpView> {
             padding: const EdgeInsets.only(bottom: 10, right: 20, left: 20),
             child: dropDownMenu(),
           ),
-          validationButton(text: "Registrar")
+          validationButton(text: "Registrar"),
+          SizedBox(height: 15),
+          InkWell(
+            child: Text('Já possui conta?'),
+            onTap: () {
+              Navigator.pop(context);
+            },
+          )
         ],
       ),
     );
