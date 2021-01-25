@@ -4,8 +4,9 @@ class User {
   String email;
   String sex;
   String about;
+  String url;
 
-  User({this.id, this.name, this.email, this.sex, this.about});
+  User({this.id, this.name, this.email, this.sex, this.about, this.url});
 
   User.fromJson(Map<String, dynamic> json) {
     id = json['_id'];
@@ -13,6 +14,7 @@ class User {
     email = json['email'];
     sex = json['sex'];
     about = json['about'];
+    url = json['url'];
   }
 
   Map<String, dynamic> toJson() {
@@ -22,6 +24,7 @@ class User {
     data['email'] = this.email;
     data['sex'] = this.sex;
     data['about'] = this.about;
+    data['url'] = this.url;
     return data;
   }
 }

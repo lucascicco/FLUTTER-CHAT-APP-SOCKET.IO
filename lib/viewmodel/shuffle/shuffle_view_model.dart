@@ -9,4 +9,5 @@ class ShuffleViewModel {
   String get email => _user.email;
   String get sex => _user.sex;
   String get about => _user.about;
+  String get url => _user.url;
 }

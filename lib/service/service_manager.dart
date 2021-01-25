@@ -1,10 +1,11 @@
-import '../core/constant.dart';
+import 'package:path/path.dart';
 import '../helper/preferences_helper.dart';
 import '../model/message.dart';
 import '../model/user.dart';
-import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
+import 'dart:convert';
+import '../core/constant.dart';
 
 class ServiceManager {
   static final shared = ServiceManager();
@@ -15,7 +16,7 @@ class ServiceManager {
     SharedPreferences pref = await SharedPreferences.getInstance();
     var token = await SharedPreferencesHelper.shared.getUserToken();
     var body = json.encode({"token": token});
-    var response = await http.post("http://192.168.15.33:3000/user/userinfo",
+    var response = await http.post(Constant.shared.baseURL + "/user/userinfo",
         headers: header, body: body);
     var data = jsonDecode(response.body);
 
@@ -24,22 +25,40 @@ class ServiceManager {
 
   void signUp(Map<String, dynamic> userData,
       {void Function(String message) completionHandler}) async {
-    var body = json.encode(userData);
-    print(Constant.shared.baseURL);
-    var response = await http.post("http://192.168.15.33:3000/user/signup",
-        headers: header, body: body);
-    var data = jsonDecode(response.body);
-    var dataMessage = data['message'];
+    print(userData['file']);
+    var postUri = Uri.parse(Constant.shared.baseURL + "/user/signup");
 
-    if (dataMessage is bool) {
-      if (dataMessage) {
-        completionHandler("Registro criado, faça login.");
-      } else {
-        completionHandler("O registro do usuário já existe, por favor.");
-      }
-    } else {
-      completionHandler(dataMessage as String);
-    }
+    var request = new http.MultipartRequest("POST", postUri);
+
+    var stream =
+        new http.ByteStream(Stream.castFrom(userData['file'].openRead()));
+
+    var length = await userData['file'].length();
+
+    request.fields['name'] = userData['name'];
+    request.fields['password'] = userData['password'];
+    request.fields['email'] = userData['email'];
+    request.fields['sex'] = userData['sex'];
+    request.fields['about'] = userData['about'];
+
+    request.files.add(new http.MultipartFile('file', stream, length,
+        filename: basename(userData['file'].path)));
+
+    http.StreamedResponse response = await request.send();
+
+    var result = await http.Response.fromStream(response);
+
+    print(result.body);
+
+    // if (dataMessage is bool) {
+    //   if (dataMessage) {
+    //     completionHandler("Registro criado, faça login.");
+    //   } else {
+    //     completionHandler("O registro do usuário já existe, por favor.");
+    //   }
+    // } else {
+    //   completionHandler(dataMessage as String);
+    // }
   }
 
   void signIn(Map<String, dynamic> userData,
@@ -49,7 +68,7 @@ class ServiceManager {
     var body = json.encode(userData);
 
     try {
-      var response = await http.post("http://192.168.15.33:3000/user/signin",
+      var response = await http.post(Constant.shared.baseURL + "/user/signin",
           headers: header, body: body);
       var jsonBody = jsonDecode(response.body);
 
@@ -77,7 +96,7 @@ class ServiceManager {
     var token = await SharedPreferencesHelper.shared.getUserToken();
 
     var response =
-        await http.get("http://192.168.15.33:3000/user/shuffle", headers: {
+        await http.get(Constant.shared.baseURL + "/user/shuffle", headers: {
       "Content-Type": "application/json",
       "Authorization": 'Bearer $token',
     });
@@ -98,7 +117,7 @@ class ServiceManager {
     var body = json.encode({"sender": myID, "receiver": receiverID});
 
     var response = await http.post(
-        "http://192.168.15.33:3000/message/fetchmessage",
+        Constant.shared.baseURL + "/message/fetchmessage",
         headers: header,
         body: body);
 
