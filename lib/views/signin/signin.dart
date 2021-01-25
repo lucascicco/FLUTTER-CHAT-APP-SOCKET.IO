@@ -25,6 +25,7 @@ class SignInView extends StatelessWidget {
           SizedBox(
             height: 35,
           ),
+          Image.asset('assets/TalkyAppIcon.png', width: 200, height: 200),
           Padding(
             padding: const EdgeInsets.only(bottom: 10, right: 20, left: 20),
             child: EGTextFormField(

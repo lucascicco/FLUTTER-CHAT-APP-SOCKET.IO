@@ -48,13 +48,19 @@ class _ShuffleViewState extends BaseState<ShuffleView> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('TalkyApp'),
+        title: Row(
+          children: [
+            Image.asset('assets/TalkyAppIcon.png', width: 20, height: 20),
+            Text('TalkyApp'),
+          ],
+        ),
         backgroundColor: Colors.cyan,
         actions: [
           IconButton(
               icon: Icon(Icons.exit_to_app),
               onPressed: () async {
                 await SharedPreferencesHelper.shared.removeToken();
+
                 Navigator.of(context).pushAndRemoveUntil(
                     MaterialPageRoute(builder: (context) => SignInView()),
                     (route) => false);

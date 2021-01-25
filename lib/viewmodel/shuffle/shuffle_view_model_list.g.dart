@@ -73,6 +73,6 @@ mixin _$ShufListState on ShuffleListVM, Store {
       status: ${status},
       userList: ${userList},
       onlineUsers: ${onlineUsers}
-    ''';
+      ''';
   }
 }
