@@ -16,8 +16,9 @@ import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 class ChatView extends StatefulWidget {
   final String receiverID;
   final String clientName;
+  final String userImage;
 
-  ChatView({this.receiverID, this.clientName});
+  ChatView({this.receiverID, this.clientName, this.userImage});
 
   @override
   _ChatViewState createState() => _ChatViewState();
@@ -127,8 +128,7 @@ class _ChatViewState extends BaseState<ChatView> {
                       height: 40,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: NetworkImage(
-                                  "https://yt3.ggpht.com/a/AATXAJymPwE0-PXbFjcJDrZ9unwi5qXZq3dWLB53ha7nwZw=s100-c-k-c0xffffffff-no-rj-mo")),
+                              image: NetworkImage(widget.userImage)),
                           color: Colors.red,
                           shape: BoxShape.circle),
                     ),
