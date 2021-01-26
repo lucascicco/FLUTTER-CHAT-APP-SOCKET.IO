@@ -99,8 +99,8 @@ class _ChatViewState extends BaseState<ChatView> {
                         Observer(
                           builder: (context) => Text(
                             state.onlineUsers.contains(widget.receiverID)
-                                ? "Conectados"
-                                : "Visto pela última vez",
+                                ? "Conectado"
+                                : "Desconectado",
                             style: TextStyle(
                                 color: Colors.blueGrey,
                                 fontWeight: FontWeight.bold),
@@ -128,6 +128,7 @@ class _ChatViewState extends BaseState<ChatView> {
                       height: 40,
                       decoration: BoxDecoration(
                           image: DecorationImage(
+                              fit: BoxFit.fill,
                               image: NetworkImage(widget.userImage)),
                           color: Colors.red,
                           shape: BoxShape.circle),
@@ -205,7 +206,7 @@ class _ChatViewState extends BaseState<ChatView> {
         return Stack(
           children: [
             Center(
-              child: Text('Digite algo, o chat ainda está em branco.)'),
+              child: Text('Digite algo, o chat ainda está em branco.'),
             )
           ],
         );

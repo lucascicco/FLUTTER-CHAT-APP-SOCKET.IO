@@ -51,6 +51,7 @@ class _SignUpViewState extends State<SignUpView> {
               hintText: 'Senha',
               controller: _password,
               labelText: 'Senha',
+              obscureText: true,
             ),
           ),
           Padding(
@@ -71,8 +72,8 @@ class _SignUpViewState extends State<SignUpView> {
                 children: [
                   IconButton(icon: Icon((Icons.image)), onPressed: getImage),
                   Text(_image != null
-                      ? 'Avatar selecionado'
-                      : 'Selecione seu avatar'),
+                      ? 'Foto selecionada'
+                      : 'Selecione sua foto'),
                 ],
               )),
           validationButton(text: "Registrar"),
@@ -134,9 +135,9 @@ class _SignUpViewState extends State<SignUpView> {
         onPressed: () {
           if (_image == null) {
             return EGAlert(
-                title: "Escolha uma imagem!",
+                title: "Escolha uma foto!",
                 bodyMessage:
-                    'O avatar é obrigatório, adicione sua foto antes de prosseguir.');
+                    'A foto de seu avatar é obrigatória, adicione uma foto antes de prosseguir.');
           }
 
           var data = <String, dynamic>{

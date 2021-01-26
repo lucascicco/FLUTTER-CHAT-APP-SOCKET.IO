@@ -48,13 +48,8 @@ class _ShuffleViewState extends BaseState<ShuffleView> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Row(
-          children: [
-            Image.asset('assets/TalkyAppIcon.png', width: 20, height: 20),
-            Text('TalkyApp'),
-          ],
-        ),
         backgroundColor: Colors.cyan,
+        title: Text('TalkyApp'),
         actions: [
           IconButton(
               icon: Icon(Icons.exit_to_app),

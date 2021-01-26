@@ -15,11 +15,14 @@ class ServiceManager {
   Future<void> _saveUserInfoForLocale() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     var token = await SharedPreferencesHelper.shared.getUserToken();
-    var body = json.encode({"token": token});
-    var response = await http.post(Constant.shared.baseURL + "/user/userinfo",
-        headers: header, body: body);
-    var data = jsonDecode(response.body);
 
+    var response =
+        await http.get(Constant.shared.baseURL + "/user/userinfo", headers: {
+      "Content-Type": "application/json",
+      "Authorization": 'Bearer $token',
+    });
+
+    var data = jsonDecode(response.body);
     await pref.setString('myID', data['_id']);
   }
 
@@ -69,9 +72,8 @@ class ServiceManager {
     try {
       var response = await http.post(Constant.shared.baseURL + "/user/signin",
           headers: header, body: body);
-      var jsonBody = jsonDecode(response.body);
 
-      print(jsonBody);
+      var jsonBody = jsonDecode(response.body);
 
       if (jsonBody['message'] is bool) {
         var status = jsonBody['message'];

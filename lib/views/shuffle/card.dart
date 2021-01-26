@@ -43,6 +43,7 @@ class ShuffleCard extends StatelessWidget {
                           width: 40,
                           decoration: BoxDecoration(
                               image: DecorationImage(
+                                  fit: BoxFit.fill,
                                   image: NetworkImage(_user.url)),
                               shape: BoxShape.circle,
                               color: Colors.blueGrey),
