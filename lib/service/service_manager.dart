@@ -25,7 +25,6 @@ class ServiceManager {
 
   void signUp(Map<String, dynamic> userData,
       {void Function(String message) completionHandler}) async {
-    print(userData['file']);
     var postUri = Uri.parse(Constant.shared.baseURL + "/user/signup");
 
     var request = new http.MultipartRequest("POST", postUri);
@@ -48,17 +47,17 @@ class ServiceManager {
 
     var result = await http.Response.fromStream(response);
 
-    print(result.body);
+    var resultDecoded = jsonDecode(result.body);
 
-    // if (dataMessage is bool) {
-    //   if (dataMessage) {
-    //     completionHandler("Registro criado, faça login.");
-    //   } else {
-    //     completionHandler("O registro do usuário já existe, por favor.");
-    //   }
-    // } else {
-    //   completionHandler(dataMessage as String);
-    // }
+    if (resultDecoded["message"] is bool) {
+      if (resultDecoded["message"]) {
+        completionHandler("Registro criado, faça login.");
+      } else {
+        completionHandler("O registro do usuário já existe, por favor.");
+      }
+    } else {
+      completionHandler(resultDecoded["message"] as String);
+    }
   }
 
   void signIn(Map<String, dynamic> userData,
