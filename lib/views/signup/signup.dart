@@ -118,7 +118,6 @@ class _SignUpViewState extends State<SignUpView> {
         setState(() {
           _image = File(pickedFile.path);
         });
-        print('it has been added');
       } else {
         print('No image selected.');
       }
@@ -133,6 +132,13 @@ class _SignUpViewState extends State<SignUpView> {
           style: TextStyle(color: Colors.white),
         ),
         onPressed: () {
+          if (_image == null) {
+            return EGAlert(
+                title: "Escolha uma imagem!",
+                bodyMessage:
+                    'O avatar é obrigatório, adicione sua foto antes de prosseguir.');
+          }
+
           var data = <String, dynamic>{
             "name": _name.text,
             "password": _password.text,
@@ -141,6 +147,7 @@ class _SignUpViewState extends State<SignUpView> {
             "about": "Hi There",
             "file": _image
           };
+
           ServiceManager.shared.signUp(data, completionHandler: (message) {
             showDialog(
                 context: context,
