@@ -99,8 +99,8 @@ class _ChatViewState extends BaseState<ChatView> {
                         Observer(
                           builder: (context) => Text(
                             state.onlineUsers.contains(widget.receiverID)
-                                ? "Conectado"
-                                : "Desconectado",
+                                ? "Online"
+                                : "Offline",
                             style: TextStyle(
                                 color: Colors.blueGrey,
                                 fontWeight: FontWeight.bold),

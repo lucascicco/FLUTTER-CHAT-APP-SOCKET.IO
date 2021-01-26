@@ -19,9 +19,10 @@ class ShuffleCard extends StatelessWidget {
         getIt<ChatListState>().messageList.clear();
         Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => ChatView(
-                receiverID: _user.id,
-                clientName: _user.name,
-                userImage: _user.url)));
+                  receiverID: _user.id,
+                  clientName: _user.name,
+                  userImage: _user.url,
+                )));
         await ServiceManager.shared.fetchMessageList(_user.id);
       },
       child: Padding(
