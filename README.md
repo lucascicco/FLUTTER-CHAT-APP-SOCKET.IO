@@ -1,6 +1,7 @@
-# chatApp
+# TALKYAPP CHAT
 
-A new Flutter project.
+É um chat app desenvolvido em Flutter que permite conexão em tempo real através da conexão do back-end com o front-end via socket.io. O aplicativo possui num total de 4 telas: acesso, cadastro, lista de contatos e chat com contato.
+A tela de acesso permite o usuário entrar na aplicação, e quando os dados estão corretos, é gerado um token pelo back-end e armazenado pelo shared_preferences dentro do celular. A lista de contatos, é ampla e puxa do back-end todos os usuários disponíveis, exceto o próprio usuário da aplicação, e ao clicar, num perfil, é aberto o chat, e automaticamente é gerado no back-end um ID para aquela "sala de bate-papo".
 
 ## Getting Started
 
