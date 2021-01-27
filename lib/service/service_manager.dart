@@ -114,13 +114,17 @@ class ServiceManager {
 
   Future<List<Message>> fetchMessageList(String receiverID) async {
     var myID = await SharedPreferencesHelper.shared.getMyID();
+    var token = await SharedPreferencesHelper.shared.getUserToken();
 
     var body = json.encode({"sender": myID, "receiver": receiverID});
 
-    var response = await http.post(
-        Constant.shared.baseURL + "/message/fetchmessage",
-        headers: header,
-        body: body);
+    var response =
+        await http.post(Constant.shared.baseURL + "/message/fetchmessage",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": 'Bearer $token',
+            },
+            body: body);
 
     if (response.statusCode == 200) {
       var list = (json.decode(response.body) as List)

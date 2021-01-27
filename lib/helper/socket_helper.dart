@@ -14,7 +14,7 @@ class SocketHelper {
 
   void connectSocket() async {
     id = await SharedPreferencesHelper.shared.getMyID();
-    socket = IO.io('http://192.168.56.1:3000', <String, dynamic>{
+    socket = IO.io('http://192.168.15.33:3000', <String, dynamic>{
       'transports': ['websocket'],
       'autoConnect': false,
     });
@@ -42,7 +42,6 @@ class SocketHelper {
         print(data);
         var list = List<String>.from(data['users']);
         getIt<ChatListState>().setWritingUsers(list);
-        //print(getIt<ChatListState>().writingUsers);
       });
     });
   }
