@@ -27,13 +27,34 @@ API calls to the backend are made by ServiceManager along with the specific libr
     </span>
 </p>
 
-This project is a starting point for a Flutter application.
+<hr/>
 
-A few resources to get you started if this is your first Flutter project:
+## WHAT I USED TO DEVELOP IT? O QUE EU USEI PARA DESENVOLVER?
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+The packages that were used on the application:
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Os pacotes que foram usados no aplicativo:
+
+- flutter
+- cupertino_icons
+- socket_io_client
+- shared_preferences
+- http
+- mobx
+- flutter_mobx
+- get_it
+- scrollable_positioned_list
+- file_picker
+- photo_view
+- http_parser
+- image_picker
+
+<hr/> 
+
+Devolped by, 
+
+Desenvolvido por,
+
+lucascicco
+
+
