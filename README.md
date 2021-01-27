@@ -54,6 +54,7 @@ Os pacotes que foram usados no aplicativo:
 ### BACK-END
 [TALKYAPP-MONGODB-SOCKET.IO](https://github.com/lucascicco/TALKYAPP-MONGODB-SOCKET.IO)
 
+<hr/>
 
 Devolped by, 
 
